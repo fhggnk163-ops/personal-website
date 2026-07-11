@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>أحمد فهد خشم — طالب ذكاء اصطناعي</title>
+  <meta name="description" content="الموقع الشخصي لأحمد فهد خشم، طالب ذكاء اصطناعي في جامعة طيبة." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ══════════ الشريط العلوي ══════════ -->
+  <header class="topbar">
+    <a href="#top" class="topbar__mark" aria-label="الصفحة الرئيسية">
+      <span>أ.خ</span>
+    </a>
+    <nav class="topbar__nav" aria-label="التنقل الرئيسي">
+      <a href="#about">عنّي</a>
+      <a href="#skills">مهاراتي</a>
+      <a href="#work">أعمالي</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ══════════ الواجهة الأولى ══════════ -->
+    <section class="hero">
+      <!-- الزخرفة الهندسية: نجمة ثمانية متكررة، هي التوقيع البصري للصفحة -->
+      <svg class="hero__pattern" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="girih" width="80" height="80" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square">
+              <path d="M20 20 H60 V60 H20 Z" />
+              <path d="M40 12 L68 40 L40 68 L12 40 Z" />
+              <path d="M40 12 V0  M68 40 H80  M40 68 V80  M12 40 H0" />
+              <path d="M20 20 L0 0  M60 20 L80 0  M60 60 L80 80  M20 60 L0 80" />
+            </g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#girih)" />
+      </svg>
+
+      <div class="hero__inner">
+        <p class="eyebrow">&lt;!-- متدرّب في مسار البرمجة · الأساليب الذكية --&gt;</p>
+
+        <h1 class="hero__name">أحمد فهد خشم</h1>
+
+        <p class="hero__line">
+          طالب ذكاء اصطناعي في جامعة طيبة. أتعلّم كيف تُبنى الأنظمة الذكية،
+          وأبني واجهات الويب التي تجعلها في متناول الناس.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#work">شاهد أعمالي</a>
+          <a class="btn btn--ghost" href="#contact">تواصل معي</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ عنّي ══════════ -->
+    <section id="about" class="section">
+      <p class="eyebrow">01 · عنّي</p>
+      <div class="about">
+        <div class="about__text">
+          <p>
+            مرحباً 👋 أنا <strong>أحمد فهد خشم</strong>، طالب في <strong>جامعة طيبة</strong>
+            بتخصص <strong>الذكاء الاصطناعي</strong>. يشدّني في التخصص أنه لا يتوقف عند النظرية:
+            كل فكرة تتحوّل في النهاية إلى شيء يعمل على الشاشة أمامك.
+          </p>
+          <p>
+            وإلى جانب الدراسة، أطوّر مهاراتي في تطوير الويب عبر مسار برمجة المواقع والتطبيقات
+            في الأساليب الذكية — وهذا الموقع أول ثمرة منه، بُني بـ HTML و CSS من الصفر.
+          </p>
+          <p>
+            خارج الشاشة، تجدني في ملعب <strong>كرة السلة</strong>؛ لعبة تعلّمك أن القراءة السريعة
+            للموقف أهم من السرعة نفسها — وهو الدرس ذاته الذي أطبّقه في البرمجة.
+          </p>
+        </div>
+
+        <dl class="facts">
+          <div class="facts__row">
+            <dt>الجامعة</dt>
+            <dd>طيبة</dd>
+          </div>
+          <div class="facts__row">
+            <dt>التخصص</dt>
+            <dd>ذكاء اصطناعي</dd>
+          </div>
+          <div class="facts__row">
+            <dt>المدينة</dt>
+            <dd>المدينة المنورة</dd>
+          </div>
+          <div class="facts__row">
+            <dt>الرياضة</dt>
+            <dd>كرة السلة 🏀</dd>
+          </div>
+          <div class="facts__row">
+            <dt>الحالة</dt>
+            <dd>متاح للتدريب والفرص</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ══════════ المهارات ══════════ -->
+    <section id="skills" class="section">
+      <p class="eyebrow">02 · مهاراتي</p>
+
+      <!-- المهارة المميّزة: الكتابة باللمس -->
+      <div class="highlight">
+        <div class="highlight__keys" aria-hidden="true">
+          <span>ا</span><span>ل</span><span>ل</span><span>م</span><span>س</span>
+        </div>
+        <div class="highlight__text">
+          <h3 class="highlight__title">الكتابة باللمس</h3>
+          <p>
+            أكتب دون النظر إلى لوحة المفاتيح — عيني على الشاشة، وأصابعي تعرف طريقها.
+            مهارة صغيرة، لكنها توفّر ساعات في كل مشروع كود.
+          </p>
+        </div>
+      </div>
+
+      <!-- ✏️ احذف ما لا ينطبق عليك، وأضف ما تتقنه فعلاً -->
+      <ul class="chips">
+        <li class="chip">HTML5</li>
+        <li class="chip">CSS3</li>
+        <li class="chip">Flexbox &amp; Grid</li>
+        <li class="chip">التصميم المتجاوب</li>
+        <li class="chip">Git &amp; GitHub</li>
+        <li class="chip">Python <span class="chip__note">أتعلّمها</span></li>
+        <li class="chip">أساسيات الذكاء الاصطناعي</li>
+      </ul>
+    </section>
+
+    <!-- ══════════ الأعمال ══════════ -->
+    <section id="work" class="section">
+      <p class="eyebrow">03 · أعمالي</p>
+      <div class="cards">
+
+        <article class="card">
+          <h3 class="card__title">الموقع الشخصي</h3>
+          <p class="card__desc">
+            هذه الصفحة نفسها: تصميم متجاوب بواجهة عربية، مبني بـ HTML و CSS فقط
+            دون أي مكتبات خارجية، ومنشور عبر GitHub Pages.
+          </p>
+          <p class="card__tags">HTML · CSS · GitHub Pages</p>
+          <a class="card__link" href="https://github.com/fhggnk163-ops/personal-website">عرض الكود على GitHub ↖</a>
+        </article>
+
+        <!-- ✏️ استبدل هذه البطاقة بمشروعك القادم -->
+        <article class="card">
+          <h3 class="card__title">اسم المشروع الثاني</h3>
+          <p class="card__desc">
+            وصف مختصر في سطرين: ما المشكلة التي يحلّها المشروع، وما الذي بنيته فيه.
+          </p>
+          <p class="card__tags">HTML · CSS</p>
+          <a class="card__link" href="#">عرض المشروع ↖</a>
+        </article>
+
+        <!-- ✏️ استبدل هذه البطاقة بمشروعك القادم -->
+        <article class="card">
+          <h3 class="card__title">اسم المشروع الثالث</h3>
+          <p class="card__desc">
+            وصف مختصر في سطرين: ما المشكلة التي يحلّها المشروع، وما الذي بنيته فيه.
+          </p>
+          <p class="card__tags">Python · AI</p>
+          <a class="card__link" href="#">عرض المشروع ↖</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══════════ التواصل ══════════ -->
+    <section id="contact" class="section contact">
+      <p class="eyebrow">04 · تواصل</p>
+      <p class="contact__pitch">هل لديك فكرة أو فرصة تدريب؟ الرسالة تصلني مباشرة.</p>
+
+      <!-- ✏️ ضع بريدك الحقيقي هنا (في مكانين: href وفي النص) -->
+      <a class="contact__mail" href="mailto:ahmed@example.com">ahmed@example.com</a>
+
+      <ul class="links">
+        <li><a href="https://github.com/fhggnk163-ops">GitHub</a></li>
+        <!-- ✏️ ضع رابط حسابك أو احذف السطر -->
+        <li><a href="https://linkedin.com/in/username">LinkedIn</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>صُمّم وبُني بـ HTML و CSS · أحمد فهد خشم · ٢٠٢٦</p>
+  </footer>
+
+  <script>
+    // إظهار تدريجي للأقسام عند التمرير (يُحترم فيه تفضيل تقليل الحركة)
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sections = document.querySelectorAll('.section');
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      sections.forEach(s => s.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</body>
+</html>
