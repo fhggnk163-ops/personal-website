@@ -10,7 +10,423 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+  /* ══════════════════════════════════════════
+     المتغيرات — غيّر الألوان من هنا فقط
+     ══════════════════════════════════════════ */
+  :root {
+    --ink:        #0C2429;  /* الخلفية الداكنة */
+    --ink-soft:   #123138;  /* بطاقات وحدود */
+    --paper:      #F2F5F4;  /* النص الفاتح */
+    --muted:      #8FA8AC;  /* نص ثانوي */
+    --teal:       #1F9AA6;  /* اللون الأساسي */
+    --magenta:    #D4266B;  /* لون التمييز */
+
+    --font-display: 'Aref Ruqaa', serif;
+    --font-body:    'IBM Plex Sans Arabic', sans-serif;
+    --font-mono:    'IBM Plex Mono', monospace;
+
+    --maxw: 980px;
+  }
+
+  /* ══════════ أساسيات ══════════ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+  }
+
+  /* ══════════ الشريط العلوي ══════════ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 24px;
+    background: rgba(12, 36, 41, 0.82);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(143, 168, 172, 0.16);
+  }
+
+  .topbar__mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: none;
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--paper);
+    background: var(--teal);
+    border-radius: 3px;
+  }
+
+  .topbar__nav {
+    display: flex;
+    gap: 22px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .topbar__nav a { transition: color .2s ease; }
+  .topbar__nav a:hover { color: var(--paper); }
+
+  /* ══════════ الواجهة الأولى ══════════ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 24px 120px;
+    border-bottom: 1px solid rgba(143, 168, 172, 0.16);
+  }
+
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--teal);
+    opacity: .16;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 75% 30%, #000 0%, transparent 72%);
+            mask-image: radial-gradient(ellipse 70% 80% at 75% 30%, #000 0%, transparent 72%);
+    animation: fade-in 1.4s ease both;
+  }
+
+  .hero__inner {
+    position: relative;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+
+  .hero__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(44px, 9vw, 92px);
+    line-height: 1.25;
+    margin: 10px 0 18px;
+    animation: rise .7s .1s ease both;
+  }
+
+  .hero__line {
+    max-width: 34ch;
+    font-size: clamp(17px, 2.4vw, 21px);
+    color: var(--muted);
+    animation: rise .7s .25s ease both;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+    animation: rise .7s .4s ease both;
+  }
+
+  /* ══════════ الأزرار ══════════ */
+  .btn {
+    display: inline-block;
+    padding: 11px 26px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: transform .18s ease, background .2s ease, border-color .2s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn--solid {
+    background: var(--magenta);
+    color: #fff;
+  }
+
+  .btn--ghost {
+    border-color: rgba(143, 168, 172, 0.4);
+    color: var(--paper);
+  }
+
+  .btn--ghost:hover { border-color: var(--teal); }
+
+  /* ══════════ الأقسام ══════════ */
+  .section {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 84px 24px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+
+  .section.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: .06em;
+    color: var(--teal);
+    margin-bottom: 26px;
+    direction: ltr;
+    text-align: right;
+  }
+
+  /* ══════════ عنّي ══════════ */
+  .about {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about__text p + p { margin-top: 16px; }
+  .about__text strong { font-weight: 600; color: var(--paper); }
+
+  .facts {
+    border-top: 1px solid rgba(143, 168, 172, 0.22);
+    font-size: 15px;
+  }
+
+  .facts__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(143, 168, 172, 0.22);
+  }
+
+  .facts dt { color: var(--muted); }
+  .facts dd { font-weight: 500; }
+
+  /* ══════════ المهارات ══════════ */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .chip {
+    padding: 8px 16px;
+    font-size: 15px;
+    border: 1px solid rgba(143, 168, 172, 0.32);
+    border-radius: 999px;
+    background: var(--ink-soft);
+    transition: border-color .2s ease, color .2s ease;
+  }
+
+  .chip:hover { border-color: var(--teal); }
+
+  .chip__note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--magenta);
+    margin-inline-start: 6px;
+  }
+
+  /* ══════════ بطاقات الأعمال ══════════ */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px 24px;
+    background: var(--ink-soft);
+    border: 1px solid rgba(143, 168, 172, 0.18);
+    border-radius: 4px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--teal);
+  }
+
+  .card__title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .card__desc {
+    font-size: 15px;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .card__tags {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+    margin: 18px 0 12px;
+    direction: ltr;
+    text-align: right;
+  }
+
+  .card__link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--magenta);
+  }
+
+  .card__link:hover { text-decoration: underline; }
+
+  /* ══════════ التواصل ══════════ */
+  .contact__pitch {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 40ch;
+  }
+
+  .contact__mail {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: clamp(18px, 4vw, 30px);
+    color: var(--paper);
+    border-bottom: 2px solid var(--magenta);
+    padding-bottom: 4px;
+    direction: ltr;
+  }
+
+  .contact__mail:hover { color: var(--magenta); }
+
+  .links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .links a { transition: color .2s ease; }
+  .links a:hover { color: var(--teal); }
+
+  /* ══════════ التذييل ══════════ */
+  .footer {
+    padding: 28px 24px;
+    border-top: 1px solid rgba(143, 168, 172, 0.16);
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ══════════ الحركة ══════════ */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: .16; }
+  }
+
+  /* ══════════ الجوال ══════════ */
+  @media (max-width: 720px) {
+    .about { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 72px 20px 84px; }
+    .section { padding: 64px 20px; }
+    .topbar__nav { gap: 14px; font-size: 14px; }
+  }
+
+  /* ══════════ تقليل الحركة ══════════ */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .section { opacity: 1; transform: none; }
+  }
+
+  /* ══════════ المهارة المميّزة: الكتابة باللمس ══════════ */
+  .highlight {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    padding: 24px;
+    margin-bottom: 26px;
+    background: var(--ink-soft);
+    border: 1px solid rgba(143, 168, 172, 0.18);
+    border-radius: 4px;
+  }
+
+  .highlight__keys {
+    display: flex;
+    gap: 6px;
+    flex: none;
+  }
+
+  .highlight__keys span {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 42px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--paper);
+    background: #0A1D22;
+    border: 1px solid rgba(143, 168, 172, 0.28);
+    border-bottom-width: 3px;
+    border-bottom-color: var(--teal);
+    border-radius: 5px;
+    animation: keypress 2.6s ease-in-out infinite;
+  }
+
+  .highlight__keys span:nth-child(2) { animation-delay: .12s; }
+  .highlight__keys span:nth-child(3) { animation-delay: .24s; }
+  .highlight__keys span:nth-child(4) { animation-delay: .36s; }
+  .highlight__keys span:nth-child(5) { animation-delay: .48s; }
+
+  .highlight__title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .highlight__text p {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  @keyframes keypress {
+    0%, 62%, 100% { transform: translateY(0); border-bottom-width: 3px; }
+    68%           { transform: translateY(3px); border-bottom-width: 1px; }
+    74%           { transform: translateY(0); border-bottom-width: 3px; }
+  }
+
+  @media (max-width: 720px) {
+    .highlight { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .highlight__keys span { width: 34px; height: 38px; }
+  }
+  </style>
 </head>
 
 <body>
