@@ -5,7 +5,7 @@
 موقع شخصي (Portfolio) بصفحة واحدة، مبني بـ **HTML** و**CSS** فقط، بدون أي مكتبات أو أطر عمل خارجية.
 تم تنفيذه كحل لمهمة **مسار برمجة المواقع والتطبيقات** في برنامج **الأساليب الذكية (SmartMethods)**.
 
-> 🔗 **معاينة مباشرة:** https://fhggnk163-ops.github.io/personal-website/
+> 🔗 معاينة:https://personal-website-71pq.onrender.com/
 
 ---
 
